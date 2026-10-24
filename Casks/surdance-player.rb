@@ -1,12 +1,21 @@
 cask "surdance-player" do
-  arch arm: "arm64", intel: "x64"
-
-  # Bump version + sha256 when publishing a new GitHub Release asset.
   version "3.1.38"
-  sha256 arm:   "0000000000000000000000000000000000000000000000000000000000000000",
-         intel: "70525cb337d83c3737b63117b3e5248450a083d054abc174c5e3a6c5a6573ac0"
 
-  url "https://github.com/lsuen/surDancePlayer-releases/releases/download/v#{version}/surDancePlayer-macos-#{version}-#{arch}.zip"
+  on_intel do
+    sha256 "70525cb337d83c3737b63117b3e5248450a083d054abc174c5e3a6c5a6573ac0"
+    url "https://github.com/lsuen/surDancePlayer-releases/releases/download/v#{version}/surDancePlayer-macos-#{version}-x64.zip"
+  end
+
+  # Apple Silicon zip not in this release yet (build on arm64 Mac or GitHub Actions macos-latest).
+  on_arm do
+    sha256 "70525cb337d83c3737b63117b3e5248450a083d054abc174c5e3a6c5a6573ac0"
+    url "https://github.com/lsuen/surDancePlayer-releases/releases/download/v#{version}/surDancePlayer-macos-#{version}-x64.zip"
+    caveats <<~EOS
+      This release only ships an Intel (x64) build. On Apple Silicon it may run under Rosetta,
+      or wait for an arm64 asset on the Releases page.
+    EOS
+  end
+
   name "surDancePlayer"
   name "SurDance"
   desc "Beat-aware dance practice player"

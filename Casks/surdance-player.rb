@@ -4,7 +4,7 @@ cask "surdance-player" do
   # Bump version + sha256 when publishing a new GitHub Release asset.
   version "3.1.38"
   sha256 arm:   "0000000000000000000000000000000000000000000000000000000000000000",
-         intel: "0000000000000000000000000000000000000000000000000000000000000000"
+         intel: "70525cb337d83c3737b63117b3e5248450a083d054abc174c5e3a6c5a6573ac0"
 
   url "https://github.com/lsuen/surDancePlayer-releases/releases/download/v#{version}/surDancePlayer-macos-#{version}-#{arch}.zip"
   name "surDancePlayer"
